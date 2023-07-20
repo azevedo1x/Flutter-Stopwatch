@@ -18,6 +18,7 @@ class Inicio extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isOn = ref.watch(cronometroProvider);
+    int tempo = 000000;
 
     return Scaffold(
       appBar: AppBar(
@@ -25,25 +26,23 @@ class Inicio extends ConsumerWidget {
       ),
 
       //me ajude a colocar o cronometro aqui
-        body: Center(
-          child: Column(
-            children: [
-              Image(
+      body: Center(
+        child: Column(
+          children: [
+            Image(
               image: AssetImage("timer.jpg"),
               width: 250,
               height: 250,
-              ),
-              Text('00:00:00'),
-              ElevatedButton(
+            ),
+            Text(tempo.toString()),
+            ElevatedButton(
                 onPressed: () {
-
-                  
-
-                }, 
-                child: Text('Iniciar/Pausar'))
-            ],
-          ),
+                  ref.read(cronometroProvider.notifier).state = !isOn;
+                },
+                child: Text('Iniciar/Pausar')),
+          ],
         ),
+      ),
     );
   }
 }
