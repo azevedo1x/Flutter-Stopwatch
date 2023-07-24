@@ -14,7 +14,7 @@ void main() {
   );
 }
 
-final cronometroProvider = StateProvider((ref) => false);
+final cronometroProvider = StateProvider((ref) => true);
 final elapsedProvider = StateProvider((ref) => Duration.zero);
 
 class Inicio extends ConsumerWidget {
@@ -23,10 +23,7 @@ class Inicio extends ConsumerWidget {
 
   void cronometroAction(WidgetRef ref) {
     ref.read(elapsedProvider.notifier).state = stopwatch.elapsed;
-    if (ref.watch(cronometroProvider)) {
-      Future.delayed(const Duration(seconds: 1), () {
-      });
-    }
+    Timer(const Duration(milliseconds: 1), () => cronometroAction(ref));
   }
 
   @override
