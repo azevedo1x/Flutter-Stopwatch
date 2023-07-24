@@ -19,12 +19,13 @@ final elapsedProvider = StateProvider((ref) => Duration.zero);
 
 class Inicio extends ConsumerWidget {
   Stopwatch stopwatch = Stopwatch();
+  Duration elapsed = Duration.zero;
 
-  Future cronometroAction(WidgetRef ref) async {
-    while (ref.watch(cronometroProvider)) {
-      elapsed = stopwatch.elapsed;
-      await Future.delayed(const Duration(seconds: 1));
-      
+  void cronometroAction(WidgetRef ref) {
+    ref.read(elapsedProvider.notifier).state = stopwatch.elapsed;
+    if (ref.watch(cronometroProvider)) {
+      Future.delayed(const Duration(seconds: 1), () {
+      });
     }
   }
 
@@ -44,19 +45,23 @@ class Inicio extends ConsumerWidget {
               width: 250,
               height: 250,
             ),
-            Text(elapsed.toString()),
-
-            ElevatedButton(
-              onPressed: () {
-                ref.read(cronometroProvider.notifier).state = !isOn;
-
-                if (isOn == true) {
-                  stopwatch.start();
-                  cronometroAction(ref);
-                } else {
-                  stopwatch.stop();
-                }
+            Consumer(
+              builder: (context, ref, _) {
+                final elapsed = ref.watch(elapsedProvider);
+                return Text(elapsed.toString());
               },
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  ref.read(cronometroProvider.notifier).state = !isOn;
+
+                  if (isOn == true) {
+                    stopwatch.start();
+                    cronometroAction(ref);
+                  } else {
+                    stopwatch.stop();
+                  }
+                },
                 child: Text('Iniciar/Pausar')),
           ],
         ),
