@@ -32,7 +32,16 @@ class Inicio extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cronômetro Musical'),
+        title: Text('Cronômetro'),
+        leading: ElevatedButton(
+          child: Icon(Icons.info),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Sobre()),
+            );
+          },
+        ),
       ),
       body: Center(
         child: Column(
@@ -60,6 +69,39 @@ class Inicio extends ConsumerWidget {
                   }
                 },
                 child: Text('Iniciar/Pausar')),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Sobre extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sobre'),
+        leading: ElevatedButton(
+          child: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+        ),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage("timer.jpg"),
+              width: 250,
+              height: 250,
+            ),
+            Text('Cronômetro'),
+            Text('Versão 1.0'),
+            Text('Desenvolvido por:'),
+            Text('Gabriel da Silva Azevedo'),
+            Text('07/2023'),
           ],
         ),
       ),
