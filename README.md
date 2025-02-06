@@ -1,23 +1,23 @@
-# Descrição do projeto:
+# Project Description:
 
-O projeto é um aplicativo de cronômetro desenvolvido em Flutter. O cronômetro possui uma interface simples com um botão para iniciar ou pausar a contagem do tempo. O tempo decorrido é exibido na tela do cronômetro em formato de texto. O aplicativo também inclui uma tela "Sobre" que mostra informações sobre o cronômetro, como a versão do aplicativo, o desenvolvedor responsável e a data de desenvolvimento.
+The project is a stopwatch application developed in Flutter. The stopwatch features a simple interface with a button to start or pause the time count. The elapsed time is displayed on the stopwatch screen as text. The application also includes an "About" screen that provides information about the stopwatch, such as the app version, the developer responsible, and the development date.
 
-# Instruções para compilar e executar o projeto:
+# Instructions to Compile and Run the Project:
 
-1. Certifique-se de ter o Flutter instalado em seu sistema. Se ainda não tiver, siga as instruções na documentação oficial do Flutter para instalação: https://flutter.dev/docs/get-started/install
+1. Make sure you have Flutter installed on your system. If you haven't installed it yet, follow the instructions in the official Flutter documentation: [https://flutter.dev/docs/get-started/install](https://flutter.dev/docs/get-started/install).
 
-2. Copie o código fornecido e crie um novo projeto Flutter.
+2. Copy the provided code and create a new Flutter project.
 
-3. Substitua o conteúdo do arquivo `main.dart` do novo projeto com o código fornecido.
+3. Replace the contents of the `main.dart` file in the new project with the provided code.
 
-4. Certifique-se de que todas as dependências necessárias, como `flutter_riverpod`, estejam incluídas no arquivo `pubspec.yaml` do projeto. Caso necessário, execute `flutter pub get` para atualizar as dependências.
+4. Ensure that all necessary dependencies, such as `flutter_riverpod`, are included in the project's `pubspec.yaml` file. If needed, run `flutter pub get` to update the dependencies.
 
-5. Agora, você pode executar o projeto usando um emulador ou dispositivo físico conectado. Para isso, utilize o seguinte comando no terminal:
+5. Now, you can run the project using an emulator or a connected physical device. To do this, use the following command in the terminal:
 
 ```
 flutter run
 ```
 
-Isso irá compilar e executar o aplicativo em seu emulador ou dispositivo.
+This will compile and run the application on your emulator or device.
 
-Gabriel da Silva Azevedo foi o membro responsável por desenvolver o projeto do cronômetro em Flutter.
+Gabriel da Silva Azevedo was the team member responsible for developing the stopwatch project in Flutter.
