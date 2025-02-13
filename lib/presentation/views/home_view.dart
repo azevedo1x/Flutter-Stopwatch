@@ -48,7 +48,9 @@ class HomeView extends ConsumerWidget {
                   _stopwatchService.stopStopwatch();
                 }
               },
-              onReset: () => _stopwatchService.resetStopwatch(ref),
+              onReset: isOn
+                  ? () => _stopwatchService.resetStopwatch(ref)
+                  : () => _stopwatchService.stopStopwatch(),
             ),
             ),
           ],
