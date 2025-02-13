@@ -17,8 +17,8 @@ class HomeView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Stopwatch'),
-        leading: ElevatedButton(
-          child: const Icon(Icons.info),
+        leading: IconButton(
+          icon: const Icon(Icons.info),
           onPressed: () {
             Navigator.push(
               context,
@@ -27,7 +27,8 @@ class HomeView extends ConsumerWidget {
           },
         ),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             const Image(
@@ -35,13 +36,12 @@ class HomeView extends ConsumerWidget {
               width: 250,
               height: 250,
             ),
-            Text(
-              '${elapsed.inHours}:${elapsed.inMinutes % 60}:${elapsed.inSeconds % 60}.${elapsed.inMilliseconds
-              % 1000}',
-              style: const TextStyle(fontSize: 40),
-            ),
-            ElevatedButton(
-              onPressed: () {
+            const SizedBox(height: 20),
+            TimerDisplay(elapsed: elapsed),
+            const Spacer(),
+            ButtonRow(
+              isOn: isOn,
+              onStartPause: () {
                 ref.read(stopwatchProvider.notifier).state = !isOn;
                 if (isOn) {
                   _stopwatchService.startStopwatch(ref);
@@ -49,15 +49,56 @@ class HomeView extends ConsumerWidget {
                   _stopwatchService.stopStopwatch();
                 }
               },
-              child: Text(isOn ? 'Pause' : 'Start'),
-            ),
-            ElevatedButton(
-              onPressed: () => _stopwatchService.resetStopwatch(ref),
-              child: const Text('Restart'),
+              onReset: () => _stopwatchService.resetStopwatch(ref),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class TimerDisplay extends StatelessWidget {
+  final Duration elapsed;
+
+  const TimerDisplay({super.key, required this.elapsed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '${elapsed.inHours}:${elapsed.inMinutes % 60}:${elapsed.inSeconds % 60}.${elapsed.inMilliseconds % 1000}',
+      style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class ButtonRow extends StatelessWidget {
+  final bool isOn;
+  final VoidCallback onStartPause;
+  final VoidCallback onReset;
+
+  const ButtonRow({
+    super.key,
+    required this.isOn,
+    required this.onStartPause,
+    required this.onReset,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: onStartPause,
+          child: Text(isOn ? 'Start' : 'Pause'),
+        ),
+        const SizedBox(width: 20),
+        ElevatedButton(
+          onPressed: onReset,
+          child: const Text('Restart'),
+        ),
+      ],
     );
   }
 }
