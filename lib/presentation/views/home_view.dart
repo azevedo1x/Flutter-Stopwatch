@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/stopwatch_provider.dart';
 import '../../domain/stopwatch_service.dart';
 import 'about_view.dart';
+import '../../widgets/AnimatedStopwatch.dart';
 
 class HomeView extends ConsumerWidget {
   final StopwatchService _stopwatchService = StopwatchService();
@@ -31,15 +32,13 @@ class HomeView extends ConsumerWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Image(
-              image: AssetImage("timer.jpg"),
-              width: 250,
-              height: 250,
-            ),
+            AnimatedStopwatch(elapsed: elapsed),
             const SizedBox(height: 20),
             TimerDisplay(elapsed: elapsed),
             const Spacer(),
-            ButtonRow(
+            Padding(
+            padding: const EdgeInsets.only(bottom: 150.0),
+            child: ButtonRow(
               isOn: isOn,
               onStartPause: () {
                 ref.read(stopwatchProvider.notifier).state = !isOn;
@@ -50,6 +49,7 @@ class HomeView extends ConsumerWidget {
                 }
               },
               onReset: () => _stopwatchService.resetStopwatch(ref),
+            ),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stopwatch/widgets/AnimatedStopwatch.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -18,11 +19,7 @@ class AboutView extends StatelessWidget {
         child: ListView(
           children: const [
             Center(
-              child: Image(
-                image: AssetImage("timer.jpg"),
-                width: 250,
-                height: 250,
-              ),
+              child: AnimatedStopwatch(elapsed: Duration()),
             ),
             SizedBox(height: 20),
             Center(child: Text('Stopwatch', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
@@ -30,11 +27,11 @@ class AboutView extends StatelessWidget {
             Center(child: Text('v 2.0', style: TextStyle(fontSize: 18))),
             SizedBox(height: 20),
             Center(child: Text('Developed by:', style: TextStyle(fontSize: 18))),
-            Center(child: Text('Gabriel da Silva Azevedo', style: TextStyle(fontSize: 16))),
+            Center(child: Text('github.com/azevedo1x', style: TextStyle(fontSize: 16))),
             SizedBox(height: 10),
-            Center(child: Text('07/2023', style: TextStyle(fontSize: 16))),
+            Center(child: Text('v1: 07/2023', style: TextStyle(fontSize: 16))),
             SizedBox(height: 10),
-            Center(child: Text('Refactory date: 02/2025', style: TextStyle(fontSize: 16))),
+            Center(child: Text('v2: 02/2025', style: TextStyle(fontSize: 16))),
           ],
         ),
       ),
