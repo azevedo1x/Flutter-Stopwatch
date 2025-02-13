@@ -1,23 +1,63 @@
-# Project Description:
+# Stopwatch App
 
-The project is a stopwatch application developed in Flutter. The stopwatch features a simple interface with a button to start or pause the time count. The elapsed time is displayed on the stopwatch screen as text. The application also includes an "About" screen that provides information about the stopwatch, such as the app version, the developer responsible, and the development date.
+A Flutter stopwatch application built using Riverpod for state management. This app features an animated stopwatch display, start/pause/reset functionality, and an about page.
 
-# Instructions to Compile and Run the Project:
+## Features
+- Start, pause, and reset the stopwatch.
+- Animated stopwatch UI with ticking hands.
+- Uses Riverpod for state management.
+- Responsive UI with Flutter's Material design.
 
-1. Make sure you have Flutter installed on your system. If you haven't installed it yet, follow the instructions in the official Flutter documentation: [https://flutter.dev/docs/get-started/install](https://flutter.dev/docs/get-started/install).
+## Installation
 
-2. Copy the provided code and create a new Flutter project.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/azevedo1x/Flutter-Stopwatch.git
+   cd Flutter-Stopwatch
+   ```
 
-3. Replace the contents of the `main.dart` file in the new project with the provided code.
+2. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
 
-4. Ensure that all necessary dependencies, such as `flutter_riverpod`, are included in the project's `pubspec.yaml` file. If needed, run `flutter pub get` to update the dependencies.
+3. Run the app:
+   ```sh
+   flutter run
+   ```
 
-5. Now, you can run the project using an emulator or a connected physical device. To do this, use the following command in the terminal:
+## Project Structure
 
 ```
-flutter run
+stopwatch/
+│── lib/
+│   ├── data/
+│   │   ├── stopwatch_provider.dart # Riverpod state management
+│   ├── domain/
+│   │   ├── stopwatch_service.dart  # Stopwatch logic
+│   ├── presentation/
+│   │   ├── main.dart              # Entry point of the app
+│   │   ├── views/
+│   │   │   ├── home_view.dart      # Main stopwatch screen
+│   │   │   ├── about_view.dart     # About page
+│   ├── widgets/
+│   │   ├── animated_stopwatch.dart # Stopwatch animation widget
+│── pubspec.yaml                    # Project dependencies
 ```
 
-This will compile and run the application on your emulator or device.
+## Dependencies
+This project uses the following dependencies:
+- `flutter_riverpod` - State management
+- `flutter/material.dart` - UI components
 
-Gabriel da Silva Azevedo was the team member responsible for developing the stopwatch project in Flutter.
+## Usage
+
+- **Start/Pause:** Tap the "Start" button to begin timing, and "Pause" to stop.
+- **Reset:** Tap "Restart" to reset the stopwatch.
+- **About:** Click the info button in the top left corner to view the about page.
+
+## Developer Info
+Developed by [Gabriel Azevedo](https://github.com/azevedo1x)
+
+- **Version 1.0:** July 2023
+- **Version 2.0:** February 2025
