@@ -12,7 +12,7 @@ class HomeView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isOff = ref.watch(stopwatchProvider);
+    bool isOn = ref.watch(stopwatchProvider);
     final elapsed = ref.watch(elapsedProvider);
 
     return Scaffold(
@@ -39,18 +39,18 @@ class HomeView extends ConsumerWidget {
             Padding(
             padding: const EdgeInsets.only(bottom: 150.0),
             child: ButtonRow(
-              isOff: isOff,
+              isOn: isOn,
               onStartPause: () {
-                ref.read(stopwatchProvider.notifier).state = !isOff;
-                if (isOff) {
-                  _stopwatchService.startStopwatch(ref);
-                } else {
+                ref.read(stopwatchProvider.notifier).state = !isOn;
+                if (isOn) {
                   _stopwatchService.stopStopwatch();
+                } else {
+                  _stopwatchService.startStopwatch(ref); 
                 }
               },
-              onReset: isOff
-                  ? () => _stopwatchService.resetStopwatch(ref)
-                  : () => _stopwatchService.stopStopwatch(),
+              onReset: isOn
+                  ? () => _stopwatchService.stopStopwatch()
+                  : () => _stopwatchService.resetStopwatch(ref),
             ),
             ),
           ],
@@ -75,13 +75,13 @@ class TimerDisplay extends StatelessWidget {
 }
 
 class ButtonRow extends StatelessWidget {
-  final bool isOff;
+  final bool isOn;
   final VoidCallback onStartPause;
   final VoidCallback onReset;
 
   const ButtonRow({
     super.key,
-    required this.isOff,
+    required this.isOn,
     required this.onStartPause,
     required this.onReset,
   });
@@ -93,7 +93,7 @@ class ButtonRow extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: onStartPause,
-          child: Text(isOff ? 'Start' : 'Pause'),
+          child: Text(isOn ? 'Pause' : 'Start'),
         ),
         const SizedBox(width: 20),
         ElevatedButton(
