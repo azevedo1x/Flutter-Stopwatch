@@ -22,7 +22,7 @@ class HomeView extends ConsumerWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AboutView()),
+              MaterialPageRoute(builder: (context) => const AboutView()),
             );
           },
         ),
