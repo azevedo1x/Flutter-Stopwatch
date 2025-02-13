@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AboutView extends StatelessWidget {
+  const AboutView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sobre'),
+        title: const Text('About'),
         leading: ElevatedButton(
           child: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -13,19 +15,20 @@ class AboutView extends StatelessWidget {
           },
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           children: [
             Image(
-              image: const AssetImage("timer.jpg"),
+              image: AssetImage("timer.jpg"),
               width: 250,
               height: 250,
             ),
-            const Text('Cronômetro'),
-            const Text('Versão 1.0'),
-            const Text('Desenvolvido por:'),
-            const Text('Gabriel da Silva Azevedo'),
-            const Text('07/2023'),
+            Text('Stopwatch'),
+            Text('v 2.0'),
+            Text('Developed by:'),
+            Text('Gabriel da Silva Azevedo'),
+            Text('07/2023'),
+            Text('Refactory date: 02/2025')
           ],
         ),
       ),

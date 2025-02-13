@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:stopwatch/data/stopwatch_provider.dart';
 
 class StopwatchService {
   final Stopwatch _stopwatch = Stopwatch();
